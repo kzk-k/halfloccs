@@ -1,0 +1,10 @@
+@use '../foundation/_mixin' as *;
+
+.clearfix:after,
+.clearfix:before {
+    content: '';
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}

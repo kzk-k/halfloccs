@@ -1,0 +1,34 @@
+@use '../foundation/_mixin' as *;
+
+@each $prefix, $mq-value in $mq-breakpoints {
+	@include mq($prefix) {
+		@include generate-class($prefix, 'flex-wrap', 'flex-wrap', 'wrap');
+		@include generate-class($prefix, 'flex-row', 'flex-direction', 'row');
+		@include generate-class($prefix, 'flex-row-reverse', 'flex-direction', 'row-reverse');
+		@include generate-class($prefix, 'flex-col', 'flex-direction', 'column');
+		@include generate-class($prefix, 'flex-col-reverse', 'flex-direction', 'column-reverse');
+		@include generate-class($prefix, 'flex-1', 'flex', '1 1 0%');
+		@include generate-class($prefix, 'flex-auto', 'flex', '1 1 auto');
+		@include generate-class($prefix, 'flex-initial', 'flex', '0 1 auto');
+		@include generate-class($prefix, 'flex-none', 'flex', 'none');
+		@include generate-class($prefix, 'items-center', 'align-items', 'center');
+		@include generate-class($prefix, 'items-baseline', 'align-items', 'baseline');
+		@include generate-class($prefix, 'items-start', 'align-items', 'start');
+		@include generate-class($prefix, 'items-end', 'align-items', 'end');
+		@include generate-class($prefix, 'justify-center', 'justify-content', 'center');
+		@include generate-class($prefix, 'justify-between', 'justify-content', 'space-between');
+		@include generate-class($prefix, 'justify-around', 'justify-content', 'space-around');
+		@include generate-class($prefix, 'justify-start', 'justify-content', 'flex-start');
+		@include generate-class($prefix, 'justify-end', 'justify-content', 'flex-end');
+		@for $i from 10 through 100 {
+			$value: #{$i * 0.1}rem;
+			@include generate-class($prefix, gap-#{$i}, 'gap', $value);
+		}
+		@for $i from 1 through 10 {
+			@include generate-class($prefix, order-#{$i}, 'order', $i);
+		}
+		@include generate-class($prefix, 'order-first', 'order', var(--order-negative));
+		@include generate-class($prefix, 'order-last', 'order', var(--order-must));
+		@include generate-class($prefix, 'order-none', 'order', 'initial');
+	}
+}

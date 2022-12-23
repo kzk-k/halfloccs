@@ -1,0 +1,14 @@
+@use '../foundation/_mixin' as *;
+
+@each $key, $value in $mq-breakpoints {
+    @include mq($key) {
+        @include generate-class($key, 'hidden', 'display', 'none');
+        @include generate-class($key, 'inline', 'display', 'inline');
+        @include generate-class($key, 'block', 'display', 'block');
+        @include generate-class($key, 'inline-block', 'display', 'inline-block');
+        @include generate-class($key, 'table', 'display', 'table');
+        @include generate-class($key, 'table-cell', 'display', 'table-cell');
+        @include generate-class($key, 'flex', 'display', 'flex');
+        @include generate-class($key, 'inline-flex', 'display', 'inline-flex');
+    }
+}

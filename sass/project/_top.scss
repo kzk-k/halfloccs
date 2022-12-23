@@ -1,0 +1,21 @@
+@use '../foundation/_mixin' as *;
+
+.p-top {
+    &__heading {
+    }
+}
+
+.p-top-firstview {
+    @include mq {
+    }
+}
+
+.p-top-news {
+    @include mq(sm) {
+    }
+}
+
+.p-top-about {
+    @include mq(sm, max) {
+    }
+}

@@ -1,0 +1,26 @@
+:root {
+    --font-base: '-apple-system', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', '游ゴシック', YuGothic, 'メイリオ',
+        Meiryo, sans-serif;
+    --font-noto: 'Noto Sans JP', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --color-base: #111;
+    --color-primary: #222;
+    --color-primary-rgb: 00, 00, 00;
+    --color-logo: #333;
+    --color-beige-1: #fafafa;
+    --color-gray-1: #aaa;
+    --color-gray-light-1: #bbb;
+    --container-540: 54rem;
+    --container-720: 72rem;
+    --container-940: 94rem;
+    --order-negative: -99;
+    --order-min: 1;
+    --order-secondary: 9;
+    --order-primary: 99;
+    --rounded-full: 999px;
+    --viewport-default: 375;
+    --breakpoint-sm: 576;
+    --breakpoint-md: 768;
+    --breakpoint-lg: 1024;
+    --breakpoint-xl: 1280;
+}

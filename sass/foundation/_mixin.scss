@@ -1,0 +1,47 @@
+$mq-breakpoints: (
+    null: null,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1280px,
+) !default;
+
+@mixin mq($breakpoint: xl, $rule: min) {
+    $breakpoint: map-get($mq-breakpoints, $breakpoint);
+    @if $rule == max {
+        $breakpoint: $breakpoint - 0.02px;
+    }
+    @if $breakpoint == null {
+        @content;
+    } @else {
+        @media (#{$rule}-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+// ひとつひとつにメディアクエリが付くので、各ファイルでループをかける
+@mixin generate-class($prefix: null, $class, $method, $value) {
+    @if ($prefix == null) {
+        .#{$class} {
+            #{$method}: #{$value};
+        }
+    } @else {
+        .#{$prefix}\:#{$class} {
+            #{$method}: #{$value};
+        }
+    }
+}
+
+// 複数メソッドのクラスを作る場合
+@mixin generate-class-multi($prefix: null, $class) {
+    @if $prefix == null {
+        .#{$class} {
+            @content;
+        }
+    } @else {
+        .#{$prefix}\:#{$class} {
+            @content;
+        }
+    }
+}

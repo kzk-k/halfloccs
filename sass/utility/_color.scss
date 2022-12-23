@@ -1,0 +1,23 @@
+@use '../foundation/_mixin' as *;
+
+@each $key, $value in $mq-breakpoints {
+    @include mq($key) {
+        // background-color
+        @include generate-class($key, 'bg-white', 'background-color', 'white');
+        @include generate-class($key, 'bg-black', 'background-color', 'black');
+        @include generate-class($key, 'bg-base', 'background-color', var(--color-base));
+        @include generate-class($key, 'bg-primary', 'background-color', var(--color-primary));
+        @include generate-class($key, 'bg-beige-1', 'background-color', var(--color-beige-1));
+        @include generate-class($key, 'bg-gray-1', 'background-color', var(--color-gray-1));
+        @include generate-class($key, 'bg-light-1', 'background-color', var(--color-light-1));
+
+        // color
+        @include generate-class($key, 'text-white', 'color', 'white');
+        @include generate-class($key, 'text-black', 'color', 'black');
+        @include generate-class($key, 'text-base', 'color', var(--color-base));
+        @include generate-class($key, 'text-primary', 'color', var(--color-primary));
+        @include generate-class($key, 'text-beige-1', 'color', var(--color-beige-1));
+        @include generate-class($key, 'text-gray-1', 'color', var(--color-gray-1));
+        @include generate-class($key, 'text-light-1', 'color', var(--color-light-1));
+    }
+}

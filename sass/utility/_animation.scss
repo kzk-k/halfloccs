@@ -1,0 +1,10 @@
+@use '../foundation/_mixin' as *;
+
+@each $key, $value in $mq-breakpoints {
+    @include mq($key) {
+        @for $i from 1 through 20 {
+            $i: $i * 100;
+            @include generate-class($key, animation-delay-#{$i}, 'animation-delay', #{$i}ms);
+        }
+    }
+}

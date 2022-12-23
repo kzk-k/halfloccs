@@ -1,0 +1,10 @@
+@use '../foundation/_mixin' as *;
+
+@each $prefix, $mq-value in $mq-breakpoints {
+	@include mq($prefix) {
+		@include generate-class($prefix, 'relative', 'position', 'relative');
+		@include generate-class($prefix, 'z-init', 'z-index', 'initial');
+		@include generate-class($prefix, 'z-secondary', 'z-index', var(--order-secondary));
+		@include generate-class($prefix, 'z-primary', 'z-index', var(--order-primary));
+	}
+}

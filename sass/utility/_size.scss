@@ -1,0 +1,12 @@
+@use '../foundation/_mixin' as *;
+
+@each $prefix, $mq-value in $mq-breakpoints {
+    @include mq($prefix) {
+        @include generate-class($prefix, 'w-1\\/2', 'width', '50%');
+        @include generate-class($prefix, 'w-full', 'width', '100%');
+        @include generate-class($prefix, 'max-w-540', 'max-width', var(--container-540));
+        @include generate-class($prefix, 'max-w-720', 'max-width', var(--container-720));
+        @include generate-class($prefix, 'max-w-940', 'max-width', var(--container-940));
+        @include generate-class($prefix, 'h-full', 'height', '100%');
+    }
+}

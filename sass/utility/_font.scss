@@ -1,0 +1,23 @@
+@use '../foundation/_mixin' as *;
+
+.font-base {
+    font-family: var(--font-base);
+}
+.font-montserrat {
+    font-family: var(--font-montserrat);
+}
+
+@each $prefix, $mq-value in $mq-breakpoints {
+    @include mq($prefix) {
+        // font-size
+        @for $i from 10 through 50 {
+            $value: #{$i * 0.1}rem;
+            @include generate-class($prefix, text-#{$i}, 'font-size', $value);
+        }
+
+        // font-weight
+        @include generate-class($prefix, 'font-normal', 'font-weight', '400');
+        @include generate-class($prefix, 'font-medium', 'font-weight', '500');
+        @include generate-class($prefix, 'font-bold', 'font-weight', '700');
+    }
+}

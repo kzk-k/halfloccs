@@ -1,0 +1,38 @@
+@use '../foundation/_mixin' as *;
+
+@each $prefix, $mq-value in $mq-breakpoints {
+    @include mq($prefix) {
+        // line-height
+        @for $i from 10 through 20 {
+            $value: #{$i * 0.1};
+            @include generate-class($prefix, leading-#{$i}, 'line-height', $value);
+        }
+        // line-height 端数対応 1.65 ~ 1.85
+        @for $i from 16 through 18 {
+            $num: ($i * 10) + 5;
+            @include generate-class($prefix, leading-#{$num}, 'line-height', calc($num / 100));
+        }
+
+        @include generate-class($prefix, 'whitespace-normal', 'white-space', 'normal');
+        @include generate-class($prefix, 'whitespace-nowrap', 'white-space', 'nowrap');
+
+        // text end decoration
+        @include generate-class-multi($prefix, 'ellipsis') {
+            overflow: hidden;
+            max-width: 100%;
+            padding-top: 0.2em;
+            padding-bottom: 0.2em;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        @for $i from 2 through 8 {
+            @include generate-class-multi($prefix, line-clamp-#{$i}) {
+                display: -webkit-box;
+                -webkit-line-clamp: $i;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+        @include generate-class($prefix, 'line-clamp-none', '-webkit-line-clamp', 'unset');
+    }
+}

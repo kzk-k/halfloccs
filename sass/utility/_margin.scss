@@ -1,0 +1,49 @@
+@use '../foundation/_mixin' as *;
+
+@mixin margin($prefix: null, $class, $direction1, $direction2, $value) {
+    @if ($prefix == null) {
+        .#{$class} {
+            margin-#{$direction1}: #{$value};
+            margin-#{$direction2}: #{$value};
+        }
+    } @else {
+        .#{$prefix}\:#{$class} {
+            margin-#{$direction1}: #{$value};
+            margin-#{$direction2}: #{$value};
+        }
+    }
+}
+
+@each $prefix, $mq-value in $mq-breakpoints {
+    @include mq($prefix) {
+        // auto
+        @include generate-class($prefix, 'm-auto', 'margin', 'auto');
+        @include margin($prefix, 'my-auto', 'top', 'bottom', 'auto');
+        @include margin($prefix, 'mx-auto', 'right', 'left', 'auto');
+        @include generate-class($prefix, 'mt-auto', 'margin-top', 'auto');
+        @include generate-class($prefix, 'mb-auto', 'margin-bottom', 'auto');
+        @include generate-class($prefix, 'mr-auto', 'margin-right', 'auto');
+        @include generate-class($prefix, 'ml-auto', 'margin-left', 'auto');
+
+        // unit
+        @for $i from 1 through 100 {
+            $value: #{$i * 0.1}rem;
+            @include generate-class($prefix, m-#{$i}, 'margin', $value);
+            @include margin($prefix, my-#{$i}, 'top', 'bottom', $value);
+            @include margin($prefix, mx-#{$i}, 'right', 'left', $value);
+            @include generate-class($prefix, mt-#{$i}, 'margin-top', $value);
+            @include generate-class($prefix, mb-#{$i}, 'margin-bottom', $value);
+            @include generate-class($prefix, mr-#{$i}, 'margin-right', $value);
+            @include generate-class($prefix, ml-#{$i}, 'margin-left', $value);
+        }
+
+        // reset
+        @include generate-class($prefix, 'm-0', 'margin', '0');
+        @include margin($prefix, 'my-0', 'top', 'bottom', '0');
+        @include margin($prefix, 'mx-0', 'right', 'left', '0');
+        @include generate-class($prefix, 'mt-0', 'margin-top', '0');
+        @include generate-class($prefix, 'mb-0', 'margin-bottom', '0');
+        @include generate-class($prefix, 'mr-0', 'margin-right', '0');
+        @include generate-class($prefix, 'ml-0', 'margin-left', '0');
+    }
+}

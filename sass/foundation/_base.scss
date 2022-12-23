@@ -1,0 +1,115 @@
+@use '_mixin' as *;
+
+html {
+    overflow-x: hidden;
+    font-family: var(--font-base);
+    font-size: calc(100vw / var(--viewport-default) * 10);
+    color: var(--color-base);
+    line-height: 1.5;
+    word-break: break-all;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    @each $key, $value in $mq-breakpoints {
+        @include mq($key) {
+            @if ($key == 'xl') {
+                font-size: 10px;
+            } @else if ($key != null) {
+                font-size: calc(100vw / var(--breakpoint-#{$key}) * 10);
+            }
+        }
+    }
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+}
+
+img,
+svg {
+    vertical-align: middle;
+}
+
+img {
+    max-height: 100%;
+}
+
+svg {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+picture {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    color: inherit;
+}
+
+// 見た目目的のタグ付け禁止
+em,
+small,
+strong {
+    font: inherit;
+}
+
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+
+select {
+    appearance: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    &:enabled {
+        cursor: pointer;
+    }
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+ol {
+    list-style: none;
+}
+
+[x-cloak] {
+    display: none;
+}

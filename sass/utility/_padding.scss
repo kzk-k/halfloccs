@@ -1,0 +1,40 @@
+@use '../foundation/_mixin' as *;
+
+@mixin padding($prefix: null, $class, $direction1, $direction2, $value) {
+    @if ($prefix == null) {
+        .#{$class} {
+            padding-#{$direction1}: #{$value};
+            padding-#{$direction2}: #{$value};
+        }
+    } @else {
+        .#{$prefix}\:#{$class} {
+            padding-#{$direction1}: #{$value};
+            padding-#{$direction2}: #{$value};
+        }
+    }
+}
+
+@each $prefix, $mq-value in $mq-breakpoints {
+    @include mq($prefix) {
+        // unit
+        @for $i from 1 through 100 {
+            $value: #{$i * 0.1}rem;
+            @include generate-class($prefix, p-#{$i}, 'padding', $value);
+            @include padding($prefix, py-#{$i}, 'top', 'bottom', $value);
+            @include padding($prefix, px-#{$i}, 'right', 'left', $value);
+            @include generate-class($prefix, pt-#{$i}, 'padding-top', $value);
+            @include generate-class($prefix, pb-#{$i}, 'padding-bottom', $value);
+            @include generate-class($prefix, pr-#{$i}, 'padding-right', $value);
+            @include generate-class($prefix, pl-#{$i}, 'padding-left', $value);
+        }
+
+        // reset
+        @include generate-class($prefix, 'p-0', 'padding', '0');
+        @include padding($prefix, 'py-0', 'top', 'bottom', '0');
+        @include padding($prefix, 'px-0', 'right', 'left', '0');
+        @include generate-class($prefix, 'pt-0', 'padding-top', '0');
+        @include generate-class($prefix, 'pb-0', 'padding-bottom', '0');
+        @include generate-class($prefix, 'pr-0', 'padding-right', '0');
+        @include generate-class($prefix, 'pl-0', 'padding-left', '0');
+    }
+}

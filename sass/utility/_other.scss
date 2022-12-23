@@ -1,0 +1,45 @@
+@use '../foundation/_mixin' as *;
+
+@each $prefix, $mq-value in $mq-breakpoints {
+    @include mq($prefix) {
+        @include generate-class-multi($prefix, 'flex-center') {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @include generate-class($prefix, 'overflow-hidden', 'overflow', 'hidden');
+        @include generate-class($prefix, 'object-contain', 'object-fit', 'contain');
+        @include generate-class($prefix, 'object-cover', 'object-fit', 'cover');
+        @include generate-class-multi($prefix, 'scroll-bar-none') {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+                height: 0;
+            }
+        }
+        @include generate-class($prefix, 'trans-ease', 'transition', '0.3s');
+        @include generate-class-multi($prefix, 'hover-bg-primary') {
+            transition: 0.3s;
+            &:not([disabled]) {
+                &:hover {
+                    border-color: transparent;
+                    background-color: var(--color-primary);
+                    color: white;
+                }
+            }
+        }
+        @include generate-class-multi($prefix, 'hover-opacity') {
+            transition: 0.3s;
+            &:not([disabled]) {
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+        @include generate-class-multi($prefix, 'js-splitText') {
+            display: flex;
+            overflow: hidden;
+        }
+    }
+}
