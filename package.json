@@ -2,24 +2,22 @@
     "name": "latestcss",
     "scripts": {
         "dev": "vite --open",
-        "build": "vite build"
+        "build": "NODE_ENV=production vite build"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.13",
-        "postcss": "^8.4.20",
-        "prettier": "^2.8.1",
-        "sass": "^1.57.1",
-        "vite": "^4.0.3",
-        "vite-plugin-html-purgecss": "^0.1.1"
+        "@fullhuman/postcss-purgecss": "^5.0.0",
+        "autoprefixer": "^10.4.14",
+        "postcss": "^8.4.24",
+        "prettier": "^2.8.8",
+        "sass": "^1.63.4",
+        "vite": "^4.3.9"
     },
     "volta": {
-        "node": "19.3.0",
-        "npm": "8.19.2"
+        "node": "19.8.1"
     },
     "dependencies": {
-        "@splidejs/splide": "^4.1.4",
-        "alpinejs": "^3.10.5",
+        "alpinejs": "^3.12.2",
         "body-scroll-lock": "^4.0.0-beta.0",
-        "gsap": "^3.11.4"
+        "gsap": "^3.12.1"
     }
 }
